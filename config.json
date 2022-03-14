@@ -1,0 +1,23 @@
+{
+    "name": "Record Logging Link",
+    "description": "Adds a link to the Logging page with record filter to the Record Actions dropdown on the Record Home page.",
+    "namespace": "MCRI\\RecordLoggingLink",
+    "authors": [
+        {
+            "name": "Luke Stevens",
+            "email": "luke.stevens@mcri.edu.au",
+            "institution": "Murdoch Children's Research Institute"
+        }
+    ],
+    "framework-version": 8,
+    "compatibility": {
+        "redcap-version-min": "11.1.1"
+    },
+    "permissions": [
+        "redcap_every_page_top"
+    ],
+    "system-settings": [
+    ],
+    "project-settings": [
+    ]
+}

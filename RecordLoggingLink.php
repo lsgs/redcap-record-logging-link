@@ -14,7 +14,7 @@ class RecordLoggingLink extends AbstractExternalModule
         global $user_rights, $lang, $project_id;
         if (!($user_rights['data_logging'] || SUPER_USER)) return;
         if (!(PAGE==='DataEntry/record_home.php' && isset($_GET['id']))) return;
-        $record = \htmlspecialchars($_GET['id']);
+        $record = \htmlspecialchars($_GET['id'], ENT_QUOTES);
         ?>
         <script type="text/javascript">
             $(document).ready(function(){

@@ -1,6 +1,6 @@
 {
-    "name": "Record Logging Link",
-    "description": "Adds a link to the Logging page with record filter to the Record Actions dropdown on the Record Home page.",
+    "name": "Record Logging Links",
+    "description": "Adds links with record filter to the Record Actions dropdown of the Record Home page:<ul><li>Logging</li><li>Notification Log</li><li>Survey Invitation Log</li><ul>",
     "namespace": "MCRI\\RecordLoggingLink",
     "authors": [
         {
@@ -9,15 +9,7 @@
             "institution": "Murdoch Children's Research Institute"
         }
     ],
-    "framework-version": 8,
-    "compatibility": {
-        "redcap-version-min": "11.1.1"
-    },
-    "permissions": [
-        "redcap_every_page_top"
-    ],
-    "system-settings": [
-    ],
-    "project-settings": [
-    ]
+    "framework-version": 12,
+    "system-settings": [ ],
+    "project-settings": [ ]
 }

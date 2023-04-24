@@ -11,24 +11,25 @@ use ExternalModules\AbstractExternalModule;
 class RecordLoggingLink extends AbstractExternalModule
 {
     public function redcap_every_page_top($project_id) {
-        global $user_rights;
+        global $user_rights,$lang;
         if (!(PAGE==='DataEntry/record_home.php' && isset($_GET['id']))) return;
         try {
             $user = $this->getUser();
         } catch (\Exception $e) {
             return; // e.g. not logged in
         }
-        if (!($user_rights['data_logging'] || $user->isSuperUser())) return;
-        $record = \htmlspecialchars($_GET['id'], ENT_QUOTES);
-        ?>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('#recordActionDropdown').append(
-                    '<li class="ui-menu-item"><a target="_blank" href="'+app_path_webroot+'Logging/index.php?pid=<?=$project_id?>&record=<?=$record?>" style="display:block;" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper"><span style="vertical-align:middle;color:#000066;"><i class="fas fa-receipt mr-1"></i><?=\RCView::tt('app_07')?><i class="fas fa-external-link-alt ml-1"></i></span></a></li>'
-                )
-            });
-        </script>
-        <?php
+        $record = $this->escape($_GET['id']);
+        $links = array();
+        if ($user_rights['data_logging'] || $user->isSuperUser()) $links[] = '<li class="ui-menu-item"><a target="_blank" href="'.APP_PATH_WEBROOT.'Logging/index.php?pid='.$project_id.'&record='.$record.'"                                  style="display:block;" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper"><span style="vertical-align:middle;color:#000066;"><i class="fas fa-receipt   mr-1"></i>'.\RCView::tt('app_07'    ).'<i class="fas fa-external-link-alt ml-1"></i></span></a></li>';
+        if ($user_rights['alerts']       || $user->isSuperUser()) $links[] = '<li class="ui-menu-item"><a target="_blank" href="'.APP_PATH_WEBROOT.'index.php?pid='.$project_id.'&route=AlertsController:setup&log=1&filterRecord='.$record.'" style="display:block;" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper"><span style="vertical-align:middle;color:#000066;"><i class="fas fa-table     mr-1"></i>'.\RCView::tt('alerts_20' ).'<i class="fas fa-external-link-alt ml-1"></i></span></a></li>';
+        if ($user_rights['participants'] || $user->isSuperUser()) $links[] = '<li class="ui-menu-item"><a target="_blank" href="'.APP_PATH_WEBROOT.'Surveys/invite_participants.php?pid='.$project_id.'&email_log=1&filterRecord='.$record.'"  style="display:block;" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper"><span style="vertical-align:middle;color:#000066;"><i class="fas fa-mail-bulk mr-1"></i>'.\RCView::tt('survey_350').'<i class="fas fa-external-link-alt ml-1"></i></span></a></li>';
+        echo '/* '.$this->PREFIX.' '.$this->VERSION.': links to logging pages */';
+        echo '<script type="text/javascript">';
+        echo '  $(document).ready(function(){';
+        foreach ($links as $link) {
+            echo "    $('#recordActionDropdown').append('$link');";
+        }
+        echo '  });';
+        echo '</script>';
     }
 }
-?>

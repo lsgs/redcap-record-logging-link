@@ -1,8 +1,9 @@
 ********************************************************************************
-#Record Logging Links
+# Record Logging Links
 
 Luke Stevens, Murdoch Children's Research Institute https://www.mcri.edu.au
 
+[https://github.com/lsgs/redcap-record-logging-link/](https://github.com/lsgs/redcap-record-logging-link/)
 ********************************************************************************
 ## Summary of Functionality
 

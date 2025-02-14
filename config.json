@@ -1,6 +1,6 @@
 {
     "name": "Record Logging Links",
-    "description": "Adds links with record filter to the Record Actions dropdown of the Record Home page:<ul><li>Logging</li><li>Notification Log</li><li>Survey Invitation Log</li><ul>",
+    "description": "Adds links with record filter to the Record Actions dropdown of the Record Home page:<ul><li>View Schedule</li><li>Report A (All data)</li></ul>The following features were incorporated into REDCap as core functionality in version v15.0.3. The module will continue to add them for versions prior to v15.0.3.<ul><li>Logging</li><li>Notification Log</li><li>Survey Invitation Log</li></ul>",
     "namespace": "MCRI\\RecordLoggingLink",
     "authors": [
         {
@@ -9,7 +9,7 @@
             "institution": "Murdoch Children's Research Institute"
         }
     ],
-    "framework-version": 12,
+    "framework-version": 15,
     "system-settings": [ ],
     "project-settings": [ ]
 }
